@@ -1,0 +1,28 @@
+.s-container {
+   /* background-color: white; */
+   height: 80vh;
+   width: 200vh;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   /* padding-top: 10%; */
+}
+
+.line {
+   border: 2px solid white;
+   height: inherit;
+   width: 1px;
+}
+
+.record-container {
+   height: inherit;
+   width: 40vh;
+}
+
+.sim-container {
+   height: inherit;
+   width: 130vh;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}

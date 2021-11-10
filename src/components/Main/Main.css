@@ -1,0 +1,39 @@
+.tabs {
+   background-color: #252526;
+   width: inherit;
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.tab {
+   background-color: #1e1e1e;
+   /* height: 1000px; */
+   height: 100vh;
+   width: 200vh;
+   margin: 0%;
+}
+
+.box {
+   height: inherit;
+   width: inherit;
+   /* background-color: black; */
+}
+
+.main-container {
+   background-color: #1e1e1e;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 100vh;
+}
+
+.nav-tabs {
+   background-color: #252526;
+   width: inherit;
+}
+
+.nav-link {
+   color: white;
+}

@@ -1,0 +1,25 @@
+.menu-button-container {
+   padding-left: 2%;
+   padding-right: 2%;
+}
+.navb {
+   background-color: #3c3c3c;
+   color: white;
+   /* width: inherit; */
+}
+.menubtn {
+   background-color: #3c3c3c;
+}
+
+.t-w {
+   color: white;
+}
+/* 
+.acc {
+   background-color: black;
+   color: white;
+}
+
+.accordion-button {
+   background-color: black;
+} */
