@@ -1,14 +1,16 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
+
 import Editor from "../Editor/Editor";
 import Simulator from "../Simulator/Simulator";
+
 import "./Main.css";
 
 export default function Main() {
    return (
       <div className="main-container">
          <Tabs
-            defaultActiveKey="simulator"
+            defaultActiveKey="editor"
             id="editor"
             className="justify-content-center border border-dark"
          >

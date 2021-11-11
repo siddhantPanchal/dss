@@ -6,12 +6,34 @@ import "./Editor.css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
+import Pref from "../../Pref";
 
 const server = "http://localhost:5000/";
 
+function ButtonSpinner({ loading, runCode }) {
+   if (loading) {
+      return (
+         <Button variant="dark" disabled>
+            <Spinner
+               animation="border"
+               size="sm"
+               role="status"
+               aria-hidden="true"
+            />
+         </Button>
+      );
+   } else {
+      return (
+         <Button variant="dark" onClick={runCode}>
+            Run
+         </Button>
+      );
+   }
+}
+
 export default function Editor() {
    const [code, setCode] = useState("console.log('something')");
-   const [output, setOutput] = useState(">");
+   const [output, setOutput] = useState("");
    const [loading, setLoad] = useState(false);
 
    const runCode = () => {
@@ -30,11 +52,16 @@ export default function Editor() {
          .then(
             (result) => {
                // console.log(result);
-               setOutput(result["output"]);
+               // setOutput(result["output"] + "\n");
+               setOutput(result["output"] + "\n");
+               Pref.states = result["states"];
+               Pref.onStateChanged();
+               console.log(result["states"]);
                setLoad(false);
             },
             (error) => {
-               console.error(error);
+               // console.error(error);
+               setOutput(error + "\n");
                setLoad(false);
             }
          );
@@ -49,39 +76,22 @@ export default function Editor() {
                cols="45"
                rows="20"
                className="resize-none console-text"
-               value={output + ">"}
+               value={output + ">>"}
                readOnly={true}
+               wrap={"true"}
             ></textarea>
          </div>
       );
-   }
-
-   function ButtonSpinner() {
-      if (loading) {
-         return (
-            <Button variant="dark" disabled>
-               <Spinner
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-               />
-            </Button>
-         );
-      } else {
-         return (
-            <Button variant="dark" onClick={runCode}>
-               Run
-            </Button>
-         );
-      }
    }
 
    return (
       <Container className="editor-container">
          <Row>
             <div className="editor-option-container">
-               <ButtonSpinner></ButtonSpinner>
+               <ButtonSpinner
+                  loading={loading}
+                  runCode={runCode}
+               ></ButtonSpinner>
                <Button variant="dark">Reset</Button>
             </div>
          </Row>

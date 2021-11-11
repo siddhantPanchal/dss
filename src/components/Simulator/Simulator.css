@@ -17,6 +17,11 @@
 .record-container {
    height: inherit;
    width: 40vh;
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   /* justify-content: center; */
 }
 
 .sim-container {
@@ -25,4 +30,36 @@
    display: flex;
    align-items: center;
    justify-content: space-evenly;
+}
+
+.record {
+   width: 35vh;
+   height: 70vh;
+   margin-top: 3%;
+   overflow-y: auto;
+}
+
+.record-btn {
+   background-color: #2d2d2d;
+   height: 50px;
+   text-align: center;
+   margin: 5%;
+   border: 1px solid white;
+   cursor: pointer;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.d-center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.record-index {
+   color: lawngreen;
+   /* margin-right: 0%; */
+}
+
+.op-text {
+   color: lawngreen;
 }
