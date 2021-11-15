@@ -5,7 +5,7 @@ import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import "./Editor.css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-dracula";
+import "ace-builds/src-noconflict/theme-chrome";
 import Pref from "../../Pref";
 
 const server = "http://localhost:5000/";
@@ -13,7 +13,7 @@ const server = "http://localhost:5000/";
 function ButtonSpinner({ loading, runCode }) {
    if (loading) {
       return (
-         <Button variant="dark" disabled>
+         <Button variant="light" disabled>
             <Spinner
                animation="border"
                size="sm"
@@ -24,7 +24,7 @@ function ButtonSpinner({ loading, runCode }) {
       );
    } else {
       return (
-         <Button variant="dark" onClick={runCode}>
+         <Button variant="light" onClick={runCode}>
             Run
          </Button>
       );
@@ -55,7 +55,7 @@ export default function Editor() {
                // setOutput(result["output"] + "\n");
                setOutput(result["output"] + "\n");
                Pref.states = result["states"];
-               Pref.onStateChanged();
+               Pref.stateInvoke();
                console.log(result["states"]);
                setLoad(false);
             },
@@ -85,21 +85,21 @@ export default function Editor() {
    }
 
    return (
-      <Container className="editor-container">
+      <Container className="editor-container bg-light ">
          <Row>
-            <div className="editor-option-container">
+            <div className="editor-option-container bg-secondary">
                <ButtonSpinner
                   loading={loading}
                   runCode={runCode}
                ></ButtonSpinner>
-               <Button variant="dark">Reset</Button>
+               <Button variant="light">Reset</Button>
             </div>
          </Row>
-         <Row>
-            <Col>
+         <Row className="border border-warning">
+            <Col className="my-3 ">
                <AceEditor
-                  className="border border-3"
-                  theme="dracula"
+                  className="border border-3 "
+                  theme="theme-chrome"
                   mode="javascript"
                   keyboardHandler="vim"
                   fontSize={18}
@@ -113,10 +113,10 @@ export default function Editor() {
                   }}
                ></AceEditor>
             </Col>
-            <Col>
+            <Col className="my-3 ">
                <div className="e-line"></div>
             </Col>
-            <Col xs={4}>
+            <Col xs={4} className="my-3 ">
                <Console></Console>
             </Col>
          </Row>

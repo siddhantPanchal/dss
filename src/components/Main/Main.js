@@ -8,11 +8,11 @@ import "./Main.css";
 
 export default function Main() {
    return (
-      <div className="main-container">
+      <div>
          <Tabs
-            defaultActiveKey="editor"
+            defaultActiveKey="simulator"
             id="editor"
-            className="justify-content-center border border-dark"
+            className="justify-content-around border"
          >
             <Tab eventKey="editor" title="Code Editor" className="nav-link">
                <Editor></Editor>

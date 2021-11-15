@@ -1,5 +1,5 @@
 .tabs {
-   background-color: #252526;
+   /* background-color: #252526; */
    width: inherit;
    display: flex;
    align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .tab {
-   background-color: #1e1e1e;
+   /* background-color: #1e1e1e; */
    /* height: 1000px; */
    height: 100vh;
    width: 200vh;
@@ -21,7 +21,7 @@
 }
 
 .main-container {
-   background-color: #1e1e1e;
+   /* background-color: #1e1e1e; */
    width: 100%;
    display: flex;
    flex-direction: column;
@@ -30,10 +30,10 @@
 }
 
 .nav-tabs {
-   background-color: #252526;
+   /* background-color: #252526; */
    width: inherit;
 }
 
 .nav-link {
-   color: white;
+   color: black;
 }

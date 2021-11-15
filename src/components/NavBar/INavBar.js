@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Accordion, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
+import {
+   Accordion,
+   Button,
+   Container,
+   Nav,
+   Navbar,
+   NavDropdown,
+   Offcanvas,
+} from "react-bootstrap";
 
 import "./INavBar.css";
 
@@ -53,44 +61,30 @@ export default function INavBar() {
 
    return (
       <div>
-         <Navbar variant="dark" className="navb">
-            <div className="menu-button-container">
-               <button onClick={handleShow} className="menubtn t-w">
-                  Menu
-               </button>
-            </div>
+         <Navbar bg="light" variant="light">
             <DSList show={show} handleClose={handleClose}></DSList>
-            <div className="d-flex">
+            <Container>
                <Navbar.Brand
-                  style={{
-                     color: "white",
-                  }}
+                  onClick={handleShow}
+                  className="user-select-none c-p"
                >
                   Data Structure Sim
                </Navbar.Brand>
-               <Nav>
-                  <NavDropdown title="File">
-                     <NavDropdown.Item eventKey="save">Save</NavDropdown.Item>
-                     <NavDropdown.Item eventKey="saveAs">
+               <Nav className="me-auto">
+                  <NavDropdown
+                     title="File"
+                     className="pe-5 ms-5"
+                     menuVariant="secondary"
+                  >
+                     <NavDropdown.Item>Save</NavDropdown.Item>
+                     <NavDropdown.Item>
                         Save As
                      </NavDropdown.Item>
                   </NavDropdown>
-                  <NavDropdown title="View">
-                     <NavDropdown.Item eventKey="save">Save</NavDropdown.Item>
-                     <NavDropdown.Item eventKey="saveAs">
-                        Save As
-                     </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown title="Help">
-                     <NavDropdown.Item eventKey="save">Save</NavDropdown.Item>
-                     <NavDropdown.Item eventKey="saveAs">
-                        Save As
-                     </NavDropdown.Item>
-                  </NavDropdown>
-                  {/* // <Nav.Item>View</Nav.Item> */}
-                  {/* // <Nav.Item>Help</Nav.Item> */}
+                  {/* <NavDropdown title="View" className="pe-5"></NavDropdown> */}
+                  {/* <NavDropdown title="Help" className="pe-5"></NavDropdown> */}
                </Nav>
-            </div>
+            </Container>
          </Navbar>
       </div>
    );

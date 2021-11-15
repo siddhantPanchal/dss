@@ -1,27 +1,22 @@
 .console {
-   border: 1px solid white;
+   border: 1px solid black;
    height: 70vh;
    display: flex;
    align-items: center;
    justify-content: center;
 }
 
-.console-text {
-   background-color: #090d1a;
-   color: white;
-}
-
 .resize-none {
    resize: none;
 }
 .editor-container {
-   background-color: #1e1e1e;
-   height: 70vh;
-   width: 200vh;
+   /* background-color: #1e1e1e; */
+   height: 80vh;
+   width: inherit;
 }
 
 .e-line {
-   border: 2px solid white;
+   border: 2px solid black;
    height: 70vh;
    width: 1px;
 }
@@ -29,7 +24,7 @@
 .editor-option-container {
    width: 200vh;
    height: 50px;
-   background-color: #3c3c3c;
+   /* background-color: #3c3c3c; */
    margin-bottom: 1%;
    display: flex;
    align-items: center;
