@@ -5,10 +5,22 @@ import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import "./Editor.css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-chrome";
+// import "ace-builds/src-noconflict/theme-";
 import Pref from "../../Pref";
 
 const server = "http://localhost:5000/";
+
+const defaultCode = `
+
+const SIMArray = require("../lib/SIMArray");
+
+arr = new SIMArray()
+for(let i = 0;i<10;i++){
+    arr.push(i);
+}
+console.log(arr);
+
+`;
 
 function ButtonSpinner({ loading, runCode }) {
    if (loading) {
@@ -32,9 +44,10 @@ function ButtonSpinner({ loading, runCode }) {
 }
 
 export default function Editor() {
-   const [code, setCode] = useState("console.log('something')");
+   const [code, setCode] = useState(defaultCode);
    const [output, setOutput] = useState("");
    const [loading, setLoad] = useState(false);
+   const [consoleBG, setConsoleBG] = useState("light");
 
    const runCode = () => {
       setLoad(true);
@@ -53,15 +66,21 @@ export default function Editor() {
             (result) => {
                // console.log(result);
                // setOutput(result["output"] + "\n");
-               setOutput(result["output"] + "\n");
+               if (result["isError"] === true) {
+                  setConsoleBG("danger");
+               } else {
+                  setConsoleBG("success");
+               }
+               setOutput(result["output"]);
                Pref.states = result["states"];
                Pref.stateInvoke();
-               console.log(result["states"]);
+               // console.log(result["states"]);
                setLoad(false);
             },
             (error) => {
                // console.error(error);
-               setOutput(error + "\n");
+               setConsoleBG("danger");
+               setOutput(error);
                setLoad(false);
             }
          );
@@ -69,17 +88,19 @@ export default function Editor() {
 
    function Console() {
       return (
-         <div className="console">
-            <textarea
-               name="console"
-               id="console"
-               cols="45"
-               rows="20"
-               className="resize-none console-text"
-               value={output + ">>"}
-               readOnly={true}
-               wrap={"true"}
-            ></textarea>
+         <div className={"bg-" + consoleBG}>
+            <div className="console">
+               <textarea
+                  name="console"
+                  id="console"
+                  cols="45"
+                  rows="20"
+                  className="resize-none console-text"
+                  value={output + ">>"}
+                  readOnly={true}
+                  wrap={"true"}
+               ></textarea>
+            </div>
          </div>
       );
    }
@@ -99,7 +120,7 @@ export default function Editor() {
             <Col className="my-3 ">
                <AceEditor
                   className="border border-3 "
-                  theme="theme-chrome"
+                  // theme="theme-chrome"
                   mode="javascript"
                   keyboardHandler="vim"
                   fontSize={18}

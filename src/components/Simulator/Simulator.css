@@ -63,20 +63,15 @@
    align-items: center;
    justify-content: center;
 }
-.record-index {
-   color: lawngreen;
-   /* margin-right: 0%; */
-}
-
-.op-text {
-   color: lawngreen;
-}
 
 .sim {
    width: 90%;
    height: 90%;
    border-radius: 15px;
-   /* background-color: #252526; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
 }
 
 h5 {

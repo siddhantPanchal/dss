@@ -10,7 +10,7 @@ export default function Main() {
    return (
       <div>
          <Tabs
-            defaultActiveKey="simulator"
+            defaultActiveKey="editor"
             id="editor"
             className="justify-content-around border"
          >

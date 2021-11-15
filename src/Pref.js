@@ -4,7 +4,7 @@ const Pref = {
 
    stateInvoke() {
       this.onStateChanged?.map((stateFun) => {
-         return stateFun?.();
+         return stateFun?.(this.states);
       });
    },
 };
