@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 
 import Pref from "../../Pref";
 
@@ -11,7 +11,7 @@ function Render({ state }) {
    } else {
       return (
          <div className="w-100 d-box">
-            {state?.["obj"]?.map((value, key) => {
+            {state?.["object"]?.map((value, key) => {
                return (
                   <div
                      className="ds-item border border-1 h-75 border-dark"
@@ -31,7 +31,8 @@ export default function DataStructure({ activeIndex }) {
    // console.log(activeIndex);
    const state = Pref.states?.[Number(activeIndex)];
    // if(state) {}
-   const width = state?.["obj"]?.length * 70 || 70;
+   const width = state?.["object"]?.length * 70 || 70;
+   // console.log(state);
    return (
       <div
          className="ds-container "
