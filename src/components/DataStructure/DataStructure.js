@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 
 import Pref from "../../Pref";
 
@@ -10,7 +10,7 @@ function Render({ state }) {
       return <div></div>;
    } else {
       return (
-         <div className="w-100 d-box">
+         <div className="d-box">
             {state?.["object"]?.map((value, key) => {
                return (
                   <div
@@ -31,16 +31,6 @@ export default function DataStructure({ activeIndex }) {
    // console.log(activeIndex);
    const state = Pref.states?.[Number(activeIndex)];
    // if(state) {}
-   const width = state?.["object"]?.length * 70 || 70;
    // console.log(state);
-   return (
-      <div
-         className="ds-container "
-         style={{
-            width: width,
-         }}
-      >
-         <Render state={state}></Render>
-      </div>
-   );
+   return <Render state={state}></Render>;
 }

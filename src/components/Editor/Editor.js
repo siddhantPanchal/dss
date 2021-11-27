@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import AceEditor from "react-ace";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 
+// import "ace-builds/src-noconflict/theme-";
+import Pref from "../../Pref";
+
 import "./Editor.css";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-javascript";
-// import "ace-builds/src-noconflict/theme-";
-import Pref from "../../Pref";
 
 const server = "http://localhost:5000/";
 
@@ -15,7 +16,7 @@ const defaultCode = `
 const SIMArray = require("../lib/SIMArray");
 
 arr = new SIMArray()
-for(let i = 0;i<10;i++){
+for(let i = 0;i<2;i++){
     arr.push(i);
 }
 console.log(arr);
@@ -80,7 +81,7 @@ export default function Editor() {
             (error) => {
                // console.error(error);
                setConsoleBG("danger");
-               setOutput(error);
+               setOutput("Something get wrong in Server\n");
                setLoad(false);
             }
          );
