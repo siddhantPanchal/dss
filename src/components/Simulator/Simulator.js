@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Accordion, Col, Row, Button, Container } from "react-bootstrap";
+import { Accordion, Button, Col, Container, Row } from "react-bootstrap";
+import { AiFillBackward, AiFillForward } from "react-icons/ai";
+import { FaPause, FaPlay } from "react-icons/fa";
 
 import Pref from "../../Pref";
 import DataStructure from "../DataStructure/DataStructure";
-import { AiFillBackward, AiFillForward } from "react-icons/ai";
-import { FaPlay, FaPause } from "react-icons/fa";
 
 import "./Simulator.css";
 
@@ -38,7 +38,7 @@ export default function Simulator() {
 
    const play = () => {
       ID = setInterval(() => {
-         index += 1;
+         index = ((index + 1) % maxLength) - 1;
          if (index > maxLength - 1) {
             stop();
          } else {
@@ -110,10 +110,11 @@ export default function Simulator() {
             <div>
                <h5 className="sim-header">Simulator</h5>
             </div>
-            <div className="w-75 bg-secondary rounded h-12 d-center">
+            <div className="w-75 bg-primary rounded h-12 d-center">
                <Container>
                   <Row>
                      <Col>
+                        {/* Backword Button   */}
                         <Button
                            variant="light"
                            onClick={() => {
@@ -122,22 +123,24 @@ export default function Simulator() {
                                  index -= 1;
                                  setActiveIndex(index);
                               }
-                              console.log("active : " + activeIndex);
+                              // console.log("active : " + activeIndex);
                            }}
                         >
                            <AiFillBackward size="1.5em" />
                         </Button>
                      </Col>
                      <Col>
+                        {/* Run Button */}
                         <ToggleButton />
                      </Col>
                      <Col>
+                        {/* Forword Button */}
                         <Button
                            variant="light"
                            onClick={() => {
                               if (ID) clearInterval(ID);
                               if (index < maxLength) index += 1;
-                              console.log(index);
+                              // console.log(index);
                            }}
                         >
                            <AiFillForward size="1.5em" />

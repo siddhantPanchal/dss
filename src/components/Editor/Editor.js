@@ -16,7 +16,7 @@ const defaultCode = `
 const SIMArray = require("../lib/SIMArray");
 
 arr = new SIMArray()
-for(let i = 0;i<2;i++){
+for(let i = 0;i<10;i++){
     arr.push(i);
 }
 console.log(arr);
